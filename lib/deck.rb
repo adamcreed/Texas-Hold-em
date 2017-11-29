@@ -17,4 +17,12 @@ class Deck
       @cards << { rank: rank, suit: suits[suit] }
     end
   end
+
+  def shuffle!
+    @cards.shuffle!
+  end
+
+  def deal_to(target)
+    target << @cards.pop
+  end
 end
