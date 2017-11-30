@@ -1,10 +1,10 @@
 # Holds community cards and pot
 class Table
-  attr_accessor :cards, :burned, :pot, :bet
+  attr_accessor :cards, :muck, :pot, :bet
 
   def initialize
     @cards = []
-    @burned = []
+    @muck = []
     @pot = 0
     @bet = 0
   end
