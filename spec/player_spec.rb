@@ -22,10 +22,15 @@ describe Player do
   end
 
   describe '#bet' do
-    it "subtracts the bet amount from the player's chips" do
-      @player.bet 500
+    it "moves the bet amount from the player's chips to the pot" do
+      DummyTable = Struct.new(:pot, :bet)
+      table = DummyTable.new(0, 0)
+
+      @player.bet amount: 500, table: table
 
       expect(@player.chips).to eq 1_500
+      expect(table.bet).to eq 500
+      expect(table.pot).to eq 500
     end
   end
 end

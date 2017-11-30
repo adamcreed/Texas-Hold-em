@@ -5,9 +5,13 @@ class Player
   def initialize(chips: 2_000)
     @cards = []
     @chips = chips
+    @all_in = false
   end
 
-  def bet(amount)
+  def bet(amount:, table:, ante: false)
+    # TODO: side pots
     @chips -= amount
+    table.pot += amount
+    table.bet = amount unless ante
   end
 end
