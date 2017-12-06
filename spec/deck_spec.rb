@@ -33,7 +33,6 @@ describe Deck do
       it 'gives the full name of a card' do
         expect(@deck.to_s(card: @ace_of_spades, form: 'Full'))
           .to eq 'Ace of Spades'
-
         expect(@deck.to_s(card: @two_of_clubs, form: 'Full'))
           .to eq 'Two of Clubs'
         expect(@deck.to_s(card: @ten_of_hearts, form: 'Full'))
