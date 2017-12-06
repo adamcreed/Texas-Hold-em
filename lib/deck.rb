@@ -25,4 +25,19 @@ class Deck
   def deal_to(target)
     target << @cards.pop
   end
+
+  def to_s(card:, form: 'Short')
+    ranks = { 2 => 'Two', 3 => 'Three', 4 => 'Four', 5 => 'Five',
+              6 => 'Six', 7 => 'Seven', 8 => 'Eight', 9 => 'Nine',
+              10 => 'Ten', 11 => 'Jack', 12 => 'Queen', 13 => 'King',
+              14 => 'Ace' }
+
+    if form == 'Full'
+      "#{ranks[card[:rank]]} of #{card[:suit]}"
+    else
+      short = card[:rank] >= 10 ? ranks[card[:rank]][0] : card[:rank]
+
+      "#{short}#{card[:suit][0].downcase}"
+    end
+  end
 end
