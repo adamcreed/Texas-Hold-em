@@ -51,6 +51,7 @@ class Deck
 
     if straight_flush_cards
       return { type: 'Straight Flush',
+               value: 9,
                high: straight_flush_cards.last[:rank] }
     end
 
@@ -60,6 +61,7 @@ class Deck
     if quads
       kickers = find_kickers ranks: ranks, high: quads, count: 1
       return { type: 'Four of a Kind',
+               value: 8,
                high: quads,
                kickers: kickers }
     end
@@ -69,6 +71,7 @@ class Deck
 
     if trips && pair
       return { type: 'Full House',
+               value: 7,
                high: trips,
                low: pair }
     end
@@ -79,6 +82,7 @@ class Deck
       high = ranks.last
       kickers = find_kickers ranks: ranks, high: high, count: 4
       return { type: 'Flush',
+               value: 6,
                high: high,
                kickers: kickers }
     end
@@ -88,6 +92,7 @@ class Deck
 
     if straight_cards
       return { type: 'Straight',
+               value: 5,
                high: straight_cards.last[:rank] }
     end
 
@@ -96,6 +101,7 @@ class Deck
       kickers = find_kickers ranks: ranks, high: trips, count: 2
 
       return { type: 'Three of a Kind',
+               value: 4,
                high: trips,
                kickers: kickers }
     end
@@ -106,6 +112,7 @@ class Deck
     if two
       kickers = find_kickers ranks: ranks, high: pair, low: two, count: 1
       return { type: 'Two Pair',
+               value: 3,
                high: pair,
                low: two,
                kickers: kickers }
@@ -115,6 +122,7 @@ class Deck
     if pair
       kickers = find_kickers ranks: ranks, high: pair, count: 3
       return { type: 'One Pair',
+               value: 2,
                high: pair,
                kickers: kickers }
     end
@@ -124,6 +132,7 @@ class Deck
     kickers = find_kickers ranks: ranks, high: high, count: 4
 
     { type: 'High Card',
+      value: 1,
       high: high,
       kickers: kickers }
   end
